@@ -1,10 +1,15 @@
-import net.salesianos.Verduras;
+import net.salesianos.Verdura;
 
 public class Main {
     public static void main(String[] args) {
 
-        Verduras verduras1 = new Verduras();
+        // Crear un hilo Cliente
+        // Crear un hilo Granjero
+        // Arrancarlos start. ambós
 
-        System.out.println( verduras1.getNombreVerduras());
+
+
+
+
     }
 }
