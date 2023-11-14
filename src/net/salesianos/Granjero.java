@@ -1,13 +1,14 @@
 package net.salesianos;
 
 public class Granjero extends Thread {
-
     private String nombre;
     private int cantidadVerdurasAPlantar;
+    private Restaurante restaurante;
 
-    public Granjero(String nombre, int cantidadVerduras) {
+    public Granjero(String nombre, int cantidadVerdura, Restaurante restaurante) {
         this.nombre = nombre;
-        this.cantidadVerdurasAPlantar = cantidadVerduras;
+        this.cantidadVerdurasAPlantar = cantidadVerdura;
+        this.restaurante = restaurante;
     }
 
     public void plantarVerdura() {
@@ -17,13 +18,17 @@ public class Granjero extends Thread {
 
         try {
             Thread.sleep(tiempoCrecimiento);
+            restaurante.guardarVerdura(nombreVerdura, this.nombre);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        // Guardar verdura en el restaurante
-
     }
+
     @Override
     public void run() {
+        for (int i = 0; i < this.cantidadVerdurasAPlantar; i++) {
+            plantarVerdura();
+            System.out.println(restaurante.getArrayVerdura());
+        }
     }
 }
